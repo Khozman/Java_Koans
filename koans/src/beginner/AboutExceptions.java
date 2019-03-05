@@ -102,7 +102,15 @@ public class AboutExceptions {
     @Koan
     public void catchUncheckedExceptions() {
         // What do you need to do to catch the unchecked exception?
-        doUncheckedStuff();
+        String s = ""; 
+        try{ 
+        doUncheckedStuff(); 
+        } catch (RuntimeException rr){ 
+            s = "we win!!"; 
+        } 
+ 
+        assertEquals("we win!!", s); 
+        //doUncheckedStuff();
     }
 
     @SuppressWarnings("serial")
@@ -127,7 +135,7 @@ public class AboutExceptions {
         } catch (ParentException e) {
             s = "ParentException";
         }
-        assertEquals(s, __);
+        assertEquals(s, "ChildException");
     }
 
     @Koan
@@ -139,7 +147,7 @@ public class AboutExceptions {
         } catch (IllegalArgumentException ex) {
             s = "caught an IllegalArgumentException";
         }
-        assertEquals(s, __);
+        assertEquals(s, "caught an IllegalArgumentException");
     }
 
     @Koan
@@ -151,7 +159,7 @@ public class AboutExceptions {
         } catch (IllegalArgumentException ex) {
             s = "caught an IllegalArgumentException";
         }
-        assertEquals(s, __);
+        assertEquals(s, "5");
     }
 
     private int validateUsingIllegalArgumentException(String str) {
